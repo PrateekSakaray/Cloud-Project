@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+           table {
+  width:80%;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+  color: black;
+}
+table#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+ background-color: #fff;
+}
+table#t01 th {
+  background-color: black;
+  color: white;
+}
+body {
+  font-family: Arial;
+  color: white;
+  background-image: url('/static/plane.jpg');
+         background-repeat:no-repeat;
+         background-size:cover;
+}
+p{
+  color: black;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  
+}
+
+.leftpane {
+    background-image: url('/static/dubaiairport.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+    width: 33%;
+    height: 100%;
+    float: left;
+}
+
+.middlepane {
+    background-image: url('/static/landing.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+    width: 34%;
+    height: 100%;
+    float: left;
+    background-color: #b3ffd9;
+    border-collapse: collapse;
+}
+
+.rightpane {
+  background-image: url('/static/Lounge_img.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+  width: 33%;
+  height: 100%;
+  position: relative;
+  float: left;
+  background-color: #ffffb3;
+  border-collapse: collapse;
+}
+
+
+</style>
+</head>
+
+<body>
+
+  <div>
+    <h1 style="color: black; text-align: center;">
+      Airport and Aircraft Evaluation System
+    </h1>
+
+  </div>
+
+<div class="container">
+  
+  <div class="leftpane">
+      <h1 style="font-family: Times New Roman; color: black ; text-align:center;">Top 5</h1>
+      <h2 style="font-family: Times New Roman; color: black ; text-align:center;"> Airports</h2>
+      <table align="center" id="t01">
+          <tr>
+            <th>Airport Name</th>
+            <th>Overall Rating</th>
+         </tr>
+          {% for item in airport %}
+         <tr>
+            <td>{{ item.Airport_name }}</td>
+            <td>{{ item.Overall_rating }}</td>
+         </tr>
+          {% endfor %}
+         <tr>
+           <td></td>
+           <td><a href="/es/airport">more..</a></td>
+         </tr>
+      </table>
+  </div>
+  
+  <div class="middlepane">
+      <h1 style="font-family: Times New Roman; color: black ; text-align:center;">Top 5</h1>
+      <h2 style="font-family: Times New Roman; color: black ; text-align:center;"> Airlines</h2>
+      <table align="center" id="t01">
+         <tr>
+            <th>Airline Name</th>
+            <th>Overall Rating</th>
+         </tr>
+           {% for item in airline %}
+         <tr>
+            <td>{{ item.Airline_name }}</td>
+            <td>{{ item.Overall_rating }}</td>
+         </tr>
+          {% endfor %}
+           <td></td>
+           <td><a href="/es/airline">more..</a></td>
+         </tr>
+      </table>
+  </div>
+
+  <div class="rightpane">
+      <h1 style="font-family: Times New Roman; color: black ; text-align:center;">Top 5</h1>
+      <h2 style="font-family: Times New Roman; color: black ; text-align:center;"> Lounge</h2>
+      <table align="center" id="t01">
+         <tr>
+            <th>Airline Name</th>
+            <th>Overall Rating</th>
+         </tr>
+           {% for item in lounge %}
+         <tr>
+            <td>{{ item.Airline_name }}</td>
+            <td>{{ item.Overall_rating }}</td>
+         </tr>
+          {% endfor %}
+         <tr>
+           <td></td>
+           <td><a href="/es/lounge">more..</a></td>
+         </tr>
+      </table>
+
+  </div>
+
+
+</div>
+</body>
+</html> 

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <style>
+
+         body {
+         background-image: url('/static/Dubai_Airport.jpg');
+         background-repeat:no-repeat;
+         background-size:cover;
+         } 
+
+         table {
+  width:80%;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+table#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+ background-color: #fff;
+}
+table#t01 th {
+  background-color: black;
+  color: white;
+}
+
+      </style>
+   </head>
+
+   <body>
+      <a href="/es" id="home">
+         <img src='/static/home.jpg' alt="home" height="60" width="60" class="thumbnails" />
+      </a>
+       <h1 style="color: #99ffff ; text-align: center;">Airport Ratings</h1>
+      <form id="Airport_form"  method="POST" enctype="multipart/form-data" style="text-align: center;">
+    <label style="font-size: 20px;"> Sort by ratings:</label>
+    <select id="airport_id" name = "airport">
+      <option value="Overall_rating" {% if value == 'Overall_rating' %} selected {% endif %}>Overall</option>
+      <option value="Queuing_rating" {% if value == 'Queuing_rating' %} selected {% endif %}>Queueing</option>
+      <option value="Terminal_cleanliness_rating" {% if value == 'Terminal_cleanliness_rating' %} selected {% endif %}>Terminal Cleanliness</option>
+    </select>
+    <input type="submit" value="Submit">
+  </form>
+
+<br>
+      <table align="center" id="t01">
+         <tr>
+            <th>Airport Name</th>
+            <th>Queueing Rating (Out of 5)</th>
+            <th>Terminal Cleanliness Rating (Out of 5)</th>
+            <th>Overall Rating (Out of 10)</th>
+            <th>Number of Recommendations</th>
+         </tr>
+          {% for item in airport %}
+         <tr>
+            <td>{{ item.Airport_name }}</td>
+            <td>{{ item.Queuing_rating }}</td>
+            <td>{{ item.Terminal_cleanliness_rating }}</td>
+            <td>{{ item.Overall_rating }}</td>
+            <td>{{ item.Recommended }}</td>
+         </tr>
+          {% endfor %}
+      </table>
+      </body>
+</html>

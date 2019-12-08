@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <style>
+         body {
+         background-image: url('/static/Lounge.jpg');
+         background-repeat:no-repeat;
+         background-size:cover;
+} 
+         table {
+  width:80%;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+table#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+ background-color: #fff;
+}
+table#t01 th {
+  background-color: black;
+  color: white;
+}
+
+      </style>
+   </head>
+
+   <body>
+    <a href="/es" id="home">
+         <img src='/static/home.jpg' alt="home" height="60" width="60" class="thumbnails" />
+    </a>
+     <h1 style="color: #99ffff ; text-align: center;">Lounge Ratings</h1>
+    <form id="Lounge_form"  method="POST" enctype="multipart/form-data" style="text-align: center;">
+         <label style="font-size: 20px;"> Sort by ratings:</label>
+         <select id="lounge_id" name = "lounge">
+           <option value="Overall_rating" {% if value == 'Overall_rating' %} selected {% endif %}>Overall</option>
+           <option value="Comfort_rating" {% if value == 'Comfort_rating' %} selected {% endif %}>Comfort</option>
+           <option value="Cleanliness_rating" {% if value == 'Cleanliness_rating' %} selected {% endif %}>Cleanliness</option>
+           <option value="Wifi_connection" {% if value == 'Wifi_connection' %} selected {% endif %}>Wifi Connectivity</option>
+           <option value="Staff_service" {% if value == 'Staff_service' %} selected {% endif %}>Staff Service</option>
+           <option value="Washroom_rating" {% if value == 'Washroom_rating' %} selected {% endif %}>Washroom</option>
+
+         </select>
+         <input type="submit" value="Submit">
+      </form>
+   <br>
+
+      <table align="center" id="t01">
+         <tr>
+            <th>Airline Name</th>
+             <th>Comfort Rating (Out of 5)</th>
+             <th>Cleanliness Rating (Out of 5)</th>
+             <th>Washroom Rating (Out of 5)</th>
+             <th>Wifi Connection (Out of 5)</th>
+             <th>Staff Service (Out of 5)</th>
+            <th>Overall Rating (Out of 10)</th>
+            <th>No. of Recommendations</th>
+         </tr>
+          {% for item in lounge %}
+         <tr>
+            <td>{{ item.Airline_name }}</td>
+             <td>{{ item.Comfort_rating }}</td>
+             <td>{{ item.Cleanliness_rating }}</td>
+             <td>{{ item.Washroom_rating }}</td>
+             <td>{{ item.Wifi_connection }}</td>
+             <td>{{ item.Staff_service }}</td>
+            <td>{{ item.Overall_rating }}</td>
+             <td>{{ item.Recommended }}</td>
+         </tr>
+          {% endfor %}
+      </table>
+   </body>
+</html>

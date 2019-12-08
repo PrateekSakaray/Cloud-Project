@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <style>
+
+         body {
+         background-image: url('/static/airplane.jpg');
+         background-repeat:no-repeat;
+         background-size:cover;
+         } 
+
+         table {
+  width:80%;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+table#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+ background-color: #fff;
+}
+table#t01 th {
+  background-color: black;
+  color: white;
+}
+      </style>
+   </head>
+
+   <body>
+   <a href="/es" id="home">
+         <img src='/static/home.jpg' alt="home" height="60" width="60" class="thumbnails" />
+      </a>
+      <h1 style="color: #99ffff ; text-align: center;">Airline Ratings</h1>
+      <form id="Airline_form" action="/es/airline" method="POST" enctype="multipart/form-data" style="text-align: center;">
+         <label style="font-size: 20px;"> Sort by ratings:</label>
+         <select id="airline_id" name = "airline">
+           <option value="Overall_rating" {% if value == 'Overall_rating' %} selected {% endif %}>Overall</option>
+           <option value="Seat_rating" {% if value == 'Seat_rating' %} selected {% endif %}>Seat</option>
+           <option value="Entertainment_rating" {% if value == 'Entertainment_rating' %} selected {% endif %}>Entertainment</option>
+           <option value="Value_money_rating" {% if value == 'Value_money_rating' %} selected {% endif %}>Value Money</option>
+           <option value="Food_rating" {% if value == 'Food_rating' %} selected {% endif %}>Food</option>
+           <option value="Staff_rating" {% if value == 'Staff_rating' %} selected {% endif %}>Staff Service</option>
+         </select>
+         <input type="submit" value="Submit">
+      </form>
+   <br>
+      <table align="center" id="t01">
+         <tr>
+            <th>Airline Name</th>
+            <th>Seat Rating (Out of 5)</th>
+            <th>Staff Rating (Out of 5)</th>
+            <th>Food Rating (Out of 5)</th>
+            <th>Entertainment Rating (Out of 5)</th>
+            <th>Value Money Rating (Out of 5)</th>
+            <th>Overall Rating (Out of 10)</th>
+            <th>Number of Recommendations</th>
+         </tr>
+          {% for item in airline %}
+         <tr>
+            <td>{{ item.Airline_name }}</td>
+            <td>{{ item.Seat_rating }}</td>
+            <td>{{ item.Staff_rating }}</td>
+            <td>{{ item.Food_rating }}</td>
+            <td>{{ item.Entertainment_rating }}</td>
+            <td>{{ item.Value_money_rating }}</td>
+            <td>{{ item.Overall_rating }}</td>
+            <td>{{ item.Recommended }}</td>
+         </tr>
+          {% endfor %}
+      </table>
+   </body>
+</html>
