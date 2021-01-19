@@ -50,4 +50,3 @@ between the local application and database instance running on cloud.
 ● Graphs were plotted to determine the correlation between the overall ratings by a user for the airlines
 
 ● Based on the correlation values, our model generates the top 10 airlines for the users based on the overall rating of the user
-

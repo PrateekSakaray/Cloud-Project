@@ -23,13 +23,13 @@ PROJECT_ID = 'cloudassignment2-260515'
 # CloudSQL & SQLAlchemy configuration
 # Replace the following values the respective values of your Cloud SQL
 # instance.
-CLOUDSQL_USER = 'root'
-CLOUDSQL_PASSWORD = 'root'
-CLOUDSQL_DATABASE = 'Assignment2'
+CLOUDSQL_USER = 'CLOUDSQL_USER'
+CLOUDSQL_PASSWORD = 'CLOUDSQL_PASSWORD'
+CLOUDSQL_DATABASE = 'CLOUDSQL_DATABASE'
 # Set this value to the Cloud SQL connection name, e.g.
 #   "project:region:cloudsql-instance".
 # You must also update the value in app.yaml.
-CLOUDSQL_CONNECTION_NAME = 'cloudassignment2-260515:europe-west2:cloudassignment2'
+CLOUDSQL_CONNECTION_NAME = 'CLOUDSQL_CONNECTION_NAME'
 
 # The CloudSQL proxy is used locally to connect to the cloudsql instance.
 # To start the proxy, use:
